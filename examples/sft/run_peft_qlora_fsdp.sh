@@ -1,36 +1,24 @@
-accelerate launch --config_file "configs/fsdp_config_qlora.yaml"  train.py \
+accelerate launch --config_file "/root/ce_ministral_8B/fsdp_config_qlora.yaml"  train.py \
 --seed 100 \
---model_name_or_path "meta-llama/Llama-2-70b-hf" \
---dataset_name "smangrul/ultrachat-10k-chatml" \
---chat_template_format "chatml" \
---add_special_tokens False \
---append_concat_token False \
---splits "train,test" \
---max_seq_len 2048 \
---num_train_epochs 1 \
+--model_name_or_path "mistralai/Ministral-8B-Instruct-2410" \
+--dataset_name "/root/ce_ministral_8B/tokenized_32k_final_mixed_training_set_from_group_start_v06_10000_samples_manual_selection_ai_smart_records_and_1709752579_dataset_86300_samples_1_to_10/train" \
+--num_train_epochs 100 \
 --logging_steps 5 \
 --log_level "info" \
 --logging_strategy "steps" \
---eval_strategy "epoch" \
 --save_strategy "epoch" \
 --push_to_hub \
---hub_private_repo True \
---hub_strategy "every_save" \
 --bf16 True \
---packing True \
 --learning_rate 1e-4 \
 --lr_scheduler_type "cosine" \
 --weight_decay 1e-4 \
 --warmup_ratio 0.0 \
 --max_grad_norm 1.0 \
---output_dir "llama-sft-qlora-fsdp" \
---per_device_train_batch_size 2 \
---per_device_eval_batch_size 2 \
---gradient_accumulation_steps 2 \
+--output_dir "ministral_8B_sft_qlora_fsdp" \
+--per_device_train_batch_size 1 \
+--gradient_accumulation_steps 32 \
 --gradient_checkpointing True \
 --use_reentrant True \
---dataset_text_field "content" \
---use_flash_attn True \
 --use_peft_lora True \
 --lora_r 8 \
 --lora_alpha 16 \
