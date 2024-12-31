@@ -5,7 +5,7 @@ from typing import Optional
 
 from transformers import HfArgumentParser, set_seed
 from trl import SFTConfig, SFTTrainer
-from utils import create_and_prepare_model, create_datasets, load_dataset_from_HD
+from utils import create_and_prepare_model, create_datasets, load_tokenized_dataset
 
 
 # Define and parse arguments.
@@ -106,10 +106,10 @@ def main(model_args, data_args, training_args):
     if training_args.gradient_checkpointing:
         training_args.gradient_checkpointing_kwargs = {"use_reentrant": model_args.use_reentrant}
 
-    training_args.dataset_kwargs = {
-        "append_concat_token": data_args.append_concat_token,
-        "add_special_tokens": data_args.add_special_tokens,
-    }
+    # training_args.dataset_kwargs = {
+    #     "append_concat_token": data_args.append_concat_token,
+    #     "add_special_tokens": data_args.add_special_tokens,
+    # }
 
     # datasets
     # train_dataset, eval_dataset = create_datasets(
@@ -118,7 +118,7 @@ def main(model_args, data_args, training_args):
     #     training_args,
     #     apply_chat_template=model_args.chat_template_format != "none",
     # )
-    train_dataset = load_dataset_from_HD()   
+    train_dataset = load_tokenized_dataset(data_args)   
 
     # trainer
     trainer = SFTTrainer(
@@ -126,7 +126,6 @@ def main(model_args, data_args, training_args):
         # tokenizer=tokenizer,
         args=training_args,
         train_dataset=train_dataset,
-        # eval_dataset=eval_dataset,
         peft_config=peft_config,
     )
     trainer.accelerator.print(f"{trainer.model}")

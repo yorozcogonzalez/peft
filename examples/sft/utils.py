@@ -44,10 +44,10 @@ class ChatmlSpecialTokens(str, Enum):
     def list(cls):
         return [c.value for c in cls]
 
-def load_dataset_from_HD():
+def load_tokenized_dataset(data_args):
 
     train_dataset = load_from_disk(
-        '/root/ce_ministral_8B/tokenized_2k_train_dataset_v06_for_ministral-8B-Instruct-2410/train'
+        data_args.dataset_name
         )
 
     return train_dataset
