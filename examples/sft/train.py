@@ -5,7 +5,7 @@ from typing import Optional
 
 from transformers import HfArgumentParser, set_seed
 from trl import SFTConfig, SFTTrainer
-from utils import create_and_prepare_model, create_datasets
+from utils import create_and_prepare_model, create_datasets, load_dataset_from_HD
 
 
 # Define and parse arguments.
@@ -112,20 +112,21 @@ def main(model_args, data_args, training_args):
     }
 
     # datasets
-    train_dataset, eval_dataset = create_datasets(
-        tokenizer,
-        data_args,
-        training_args,
-        apply_chat_template=model_args.chat_template_format != "none",
-    )
+    # train_dataset, eval_dataset = create_datasets(
+    #     tokenizer,
+    #     data_args,
+    #     training_args,
+    #     apply_chat_template=model_args.chat_template_format != "none",
+    # )
+    train_dataset = load_dataset_from_HD()   
 
     # trainer
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
+        # tokenizer=tokenizer,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
+        # eval_dataset=eval_dataset,
         peft_config=peft_config,
     )
     trainer.accelerator.print(f"{trainer.model}")

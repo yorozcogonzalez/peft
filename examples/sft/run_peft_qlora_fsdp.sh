@@ -25,6 +25,5 @@ accelerate launch --config_file "/root/ce_ministral_8B/fsdp_config_qlora.yaml"  
 --lora_dropout 0.1 \
 --lora_target_modules "all-linear" \
 --use_4bit_quantization True \
---use_nested_quant True \
 --bnb_4bit_compute_dtype "bfloat16" \
 --bnb_4bit_quant_storage_dtype "bfloat16"
