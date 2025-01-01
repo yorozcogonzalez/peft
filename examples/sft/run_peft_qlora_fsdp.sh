@@ -1,7 +1,7 @@
-accelerate launch --config_file "/root/ce_ministral_8B/finetuning_scripts/fsdp_config_qlora.yaml" train.py \
+accelerate launch --config_file "configs/fsdp_config_qlora.yaml" train.py \
 --seed 100 \
 --model_name_or_path "mistralai/Ministral-8B-Instruct-2410" \
---dataset_name "/root/ce_ministral_8B/tokenized_32k_final_mixed_training_set_from_group_start_v06_10000_samples_manual_selection_ai_smart_records_and_1709752579_dataset_86300_samples_1_to_10/train" \
+--dataset_name "/workspace/tokenized_32k_final_mixed_training_set_from_group_start_v06_10000_samples_manual_selection_ai_smart_records_and_1709752579_dataset_86300_samples_1_to_10/train" \
 --num_train_epochs 100 \
 --logging_steps 100 \
 --log_level "info" \
@@ -20,7 +20,8 @@ accelerate launch --config_file "/root/ce_ministral_8B/finetuning_scripts/fsdp_c
 --lora_r 8 \
 --lora_alpha 32 \
 --lora_dropout 0.1 \
---lora_target_modules  "all-linear" \
+--lora_target_modules "q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj" \
 --use_4bit_quantization True \
 --bnb_4bit_compute_dtype "bfloat16" \
---bnb_4bit_quant_storage_dtype "bfloat16"
+--bnb_4bit_quant_storage_dtype "bfloat16" \
+--use_flash_attn True

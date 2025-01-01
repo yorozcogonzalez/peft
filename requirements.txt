@@ -1,15 +1,21 @@
-accelerate
-torch
-safetensors
-bitsandbytes
-scipy
-peft
-transformers
-tqdm
-packaging
-pytest
-numpy
-pyyaml
-datasets
-psutil
-setuptools
+llama-recipes
+wandb==0.15.10
+trl
+flash-attn --no-build-isolation
+unsloth
+
+# accelerate
+# torch
+# safetensors
+# bitsandbytes
+# scipy
+# peft
+# transformers
+# tqdm
+# packaging
+# pytest
+# numpy
+# pyyaml
+# datasets
+# psutil
+# setuptools
