@@ -6,6 +6,7 @@ from typing import Optional
 from transformers import HfArgumentParser, set_seed
 from trl import SFTConfig, SFTTrainer
 from utils import create_and_prepare_model, create_datasets, load_tokenized_dataset
+import wandb
 
 
 # Define and parse arguments.
@@ -92,10 +93,13 @@ class DataTrainingArguments:
         metadata={"help": "Comma separate list of the splits to use from the dataset."},
     )
 
-
 def main(model_args, data_args, training_args):
     # Set seed for reproducibility
     set_seed(training_args.seed)
+
+    wandb.init(
+    project="llama-3.1-70B-4k-compositional_extractor", \
+    name="loss_ministral_8B_qlora_unsloth_32k")
 
     # model
     model, peft_config, tokenizer = create_and_prepare_model(model_args, data_args, training_args)

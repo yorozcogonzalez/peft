@@ -11,7 +11,7 @@ python train.py \
 --bf16 True \
 --learning_rate 2.5e-5 \
 --warmup_ratio 0.0 \
---output_dir "ministral_8B_sft_qlora_fsdp" \
+--output_dir "ministral_8B_qlora_unsloth_32k" \
 --per_device_train_batch_size 1 \
 --gradient_accumulation_steps 32 \
 --gradient_checkpointing True \
@@ -25,4 +25,6 @@ python train.py \
 --use_4bit_quantization True \
 --bnb_4bit_compute_dtype "bfloat16" \
 --bnb_4bit_quant_storage_dtype "bfloat16" \
---use_flash_attn True
+--use_flash_attn True \
+--report_to="wandb" \
+ 
