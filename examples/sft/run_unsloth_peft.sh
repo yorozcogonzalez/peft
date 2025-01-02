@@ -3,11 +3,11 @@ python train.py \
 --model_name_or_path "mistralai/Ministral-8B-Instruct-2410" \
 --dataset_name "/workspace/tokenized_32k_final_mixed_training_set_from_group_start_v06_10000_samples_manual_selection_ai_smart_records_and_1709752579_dataset_86300_samples_1_to_10/train" \
 --num_train_epochs 100 \
---logging_steps 100 \
+--logging_steps 5 \
 --log_level "info" \
 --logging_strategy "steps" \
 --save_strategy "steps" \
---save_steps 100 \
+--save_steps 5 \
 --bf16 True \
 --learning_rate 2.5e-5 \
 --warmup_ratio 0.0 \
@@ -17,6 +17,7 @@ python train.py \
 --gradient_checkpointing True \
 --use_reentrant True \
 --use_peft_lora True \
+--use_unsloth True \
 --lora_r 8 \
 --lora_alpha 32 \
 --lora_dropout 0.1 \
