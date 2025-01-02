@@ -7,7 +7,7 @@ python train.py \
 --log_level "info" \
 --logging_strategy "steps" \
 --save_strategy "steps" \
---save_steps 5 \
+--save_steps 100 \
 --bf16 True \
 --learning_rate 2.5e-5 \
 --warmup_ratio 0.0 \
