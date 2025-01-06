@@ -139,5 +139,5 @@ dmypy.json
 
 # More test things
 wandb
-
 ministral_8B_qlora_unsloth_32k/
+nohup*

@@ -1,7 +1,7 @@
 python train.py \
 --seed 100 \
 --model_name_or_path "mistralai/Ministral-8B-Instruct-2410" \
---dataset_name "/workspace/tokenized_32k_final_mixed_training_set_from_group_start_v06_10000_samples_manual_selection_ai_smart_records_and_1709752579_dataset_86300_samples_1_to_10/train" \
+--dataset_name "/workspace/tokenized_32k_final_mixed_training_set_from_group_start_v06_10000_samples_manual_selection_ai_smart_records_and_1709752579_dataset_86300_samples_1_to_10_no_line_breaks/train" \
 --num_train_epochs 100 \
 --logging_steps 5 \
 --log_level "info" \
