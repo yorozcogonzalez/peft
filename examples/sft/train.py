@@ -99,7 +99,7 @@ def main(model_args, data_args, training_args):
 
     wandb.init(
     project="llama-3.1-70B-4k-compositional_extractor", \
-    name="loss_ministral_8B_qlora_unsloth_32k")
+    name="loss_reproduce_ministral_8B_qlora_unsloth_4k_bs_64_q_proj_v_proj")
 
     # model
     model, peft_config, tokenizer = create_and_prepare_model(model_args, data_args, training_args)

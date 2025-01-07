@@ -141,3 +141,4 @@ dmypy.json
 wandb
 ministral_8B_qlora_unsloth_32k/
 nohup*
+ministral_8B_qlora_unsloth_4k_bs_64_q_proj_v_proj/
